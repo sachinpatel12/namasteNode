@@ -1,5 +1,5 @@
 const express = reuire('express');
-const { isUserAdmin,isValidUser } = require('./middlewares/auth'); // import the middleware function
+const { isUserAdmin,isValidUser } = require('../middlewares/auth'); // import the middleware function
  
 const app = express();
 
