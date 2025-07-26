@@ -3,16 +3,17 @@ const connectDB = require("./config/database"); // this will load the database c
 const app = express(); // this will create an instance of xpress
 const User = require("./models/user"); // this will load the User model
 
+app.use(express.json()); // this will parse the incoming JSON requests if we don't use this, we will not be able to parse the JSON requests and we cannot access req.body
 
 app.post("/signup", async (req, res)=>{
     try{
         const userData = {
-            firstName: "John",
-            lastName: "Doe",
-            emailId: "john.doe@example.com",
-            password: "password123",
-            age: 30,
-            gender: "Male"
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            emailId: req.body.emailId,
+            password: req.body.password,
+            age: req.body.age,
+            gender: req.body.gender
         }
 
         // Here you would typically validate the userData and check for existing users
