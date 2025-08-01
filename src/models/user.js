@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     emailId:{
         type: String,
         required: true,
-        unique: true, // Ensure emailId is unique
+        unique: true, // Ensure emailId is unique so it will create indexing on that so searching will be fast
         trim: true, // Trim whitespace from the emailId
         validate(value){
             // Validate email format using validator library
@@ -58,8 +58,8 @@ const userSchema = new mongoose.Schema({
     },
     photoUrl:{
         type: String,
-        default: 'jhttps://picsum.dev/image/1191/size', // Optional field for user photo URL
-        validate(vlue){
+        default: 'https://picsum.dev/image/1191/size', // Optional field for user photo URL
+        validate(value){
             // Validate URL format using validator library
             // This will ensure that the photoUrl is a valid URL if provided
             if(!validator.isURL(value)){

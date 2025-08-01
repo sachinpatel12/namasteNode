@@ -8,14 +8,11 @@ const validateCookie = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "No token provided" });
     } else {
-        console.log("Token from cookies:", token); // Log the token for debugging
       const decodedToken = await jwt.verify(token, config.tokenSecret);
-      console.log("Decoded Token:", decodedToken); // Log the decoded token for debugging
       if (!decodedToken) {
         return res.status(401).json({ message: "Invalid token" });
       } else {
         const { _id } = decodedToken;
-        console.log("Decoded User ID:", _id);
         if (!_id) {
           return res.status(401).json({ message: "Unauthorized access, invalid token" });
         }
