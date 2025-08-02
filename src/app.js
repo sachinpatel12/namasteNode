@@ -3,8 +3,7 @@ const connectDB = require("./config/database");
 const app = express(); 
 const cookieParser = require("cookie-parser"); 
 require('dotenv').config() 
-console.log(process.env.DB_CONNECTION_STRING)
-
+require('./routes/cronJob')
 app.use(express.json()); 
 app.use(cookieParser()); 
 

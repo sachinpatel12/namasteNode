@@ -148,7 +148,7 @@ userRouter.get('/user/reqest/friends',validateCookie,async (req,res)=>{
 userRouter.get("/user/feed",validateCookie,async (req,res)=>{
   const logedInUserId = req.user._id;
   const page = parseInt(req.query.page) || 1;
-  let limit = pareInt(req.query.limit) || 10;
+  let limit = parseInt(req.query.limit) || 10;
   limit = limit > 50 ? 50 : limit; //restricting user to not put more than 50 to reduce db load
   const skip = (page -1) * limit;
   
