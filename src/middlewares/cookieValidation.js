@@ -8,7 +8,7 @@ const validateCookie = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "No token provided" });
     } else {
-      const decodedToken = await jwt.verify(token, config.tokenSecret);
+      const decodedToken = await jwt.verify(token,process.env.JWT_SECRET_KEY);
       if (!decodedToken) {
         return res.status(401).json({ message: "Invalid token" });
       } else {

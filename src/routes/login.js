@@ -13,8 +13,12 @@ loginRouter.post("/login", async (req, res) => {
         .status(400)
         .json({ message: "Email ID and password are required" });
     }
-    const userData = await User.findOne({ emailId });
+    console.log("emsilId ", emailId)
+    const userData = await User.findOne({ emailId }).then({if(err){
+      console.log("err ",err)
+    }});
     if (!userData) {
+      console.log(userData)
       return res.status(404).json({ message: "Invalid login credentials" });
     }
     const isPasswordValid = await userData.validatePassword(password);
